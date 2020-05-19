@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body class="display" style="text-align:center;width:100%;">
+    <!--display the data-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var $display = $('.display');
+        $.ajax({
+            type: 'GET',
+            url: 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=085653dbcfac4a46bed74533202204&q=Singapore&format=json&num_of_days=5',
+            contentType: "application/json; charset=utf-8",  
+            dataType: 'json',
+            cache: false,   
+            success: function (data) {
+                $(data.data).each(function (index, value) {
+                    console.log(data);
+                    $display.append('<h1>SUCCESS!</h1>');
+                    $display.append('<div>' + JSON.stringify(data) + '</div>');
+                    alert("Success!");
+                });
+            },
+            failure: function () {
+                alert("Something went wrong...");
+            }
+        })
+    </script>
+</body>
+</html>
