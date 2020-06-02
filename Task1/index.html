@@ -2,32 +2,102 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>test push (added title)</title>
+    <title>Task 1</title>
 </head>
-<body class="display" style="text-align:center;width:100%;">
+
+<body style="position: absolute;text-align:center;width:100vw;">
     <!--display the data-->
+
+    <button id='disBtn' class="disBtn">Get Data</button>
+
+    <div id="display" class="display"></div>
+
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
+        var $disBtn = $('.disBtn');
         var $display = $('.display');
-        $.ajax({
-            type: 'GET',
-            url: 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=085653dbcfac4a46bed74533202204&q=Singapore&format=json&num_of_days=5',
-            contentType: "application/json; charset=utf-8",  
-            dataType: 'json',
-            cache: false,   
-            success: function (data) {
-                $(data.data).each(function (index, value) {
-                    console.log(data);
-                    $display.append('<h1>SUCCESS!</h1>');
-                    $display.append('<div>' + JSON.stringify(data) + '</div>');
-                    alert("Success!");
-                });
-            },
-            failure: function () {
-                alert("Something went wrong...");
-            }
-        })
+
+        $($disBtn).click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=085653dbcfac4a46bed74533202204&q=Singapore&format=json&num_of_days=5',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                cache: false,
+                beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                    $('#loader').removeClass('hidden')
+                },
+                success: function (data) {
+                    $(data.data).each(function (index, value) {
+                        console.log(data);
+                        $display.append('<h1>SUCCESS!</h1>');
+                        $display.append('<div>' + JSON.stringify(data) + '</div>');
+                    });
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                    $('#loader').addClass('hidden')
+                },
+                failure: function () {
+                    alert("Something went wrong...");
+                }
+            });
+        });
     </script>
+    <style>
+        body {
+            background: #ececec;
+        }
+        /*Hidden class for adding and removing*/
+        .lds-dual-ring.hidden {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        /*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+        .overlay {
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,.0);
+            z-index: 999;
+            opacity: 1;
+            transition: all 0.5s;
+        }
+
+        /*Spinner Styles*/
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+
+            .lds-dual-ring:after {
+                content: " ";
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: 5% auto;
+                border-radius: 50%;
+                border: 6px solid #fff;
+                border-color: rebeccapurple transparent rebeccapurple transparent;
+                animation: lds-dual-ring 1.2s linear infinite;
+            }
+
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </body>
 </html>
