@@ -6,3 +6,10 @@ Pang Jing Hui | P1845259
 
 # Json Output:
 ![](images/postman-json.png)
+
+# Diagrams to show the difference between invoking web service using C# and JQuery
+## C#:
+![](images/diagram1.jpeg)
+
+## AJAX:
+![](images/diagram2.jpeg)
