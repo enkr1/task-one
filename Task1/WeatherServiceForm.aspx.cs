@@ -23,7 +23,7 @@ namespace Task1
 
             url.Host = "api.worldweatheronline.com";
             url.Path = "premium/v1/weather.ashx";// change to v2
-            url.Query = "q=Singapore&format=xml&num_of_days=5&key=085653dbcfac4a46bed74533202204";
+            url.Query = "q=Singapore&format=xml&num_of_days=5&key=1bb0a9e027d64b9cb2895650200405";
 
             //Make a HTTP request to the global weather web service
             wsResponseXmlDoc = MakeRequest(url.ToString());
