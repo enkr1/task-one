@@ -24,3 +24,6 @@ Successufully loaded the result from Weather API.
 
 ## 2. AJAX:
 ![](images/diagram2.jpeg)
+
+# References:
+1. https://morioh.com/p/25f289ca5ed8
