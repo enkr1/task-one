@@ -1,15 +1,21 @@
 # t1
 Pang Jing Hui | P1845259 
 
-## Loading gif
+# Browser testing
+## 1. Loading gif
 ![](images/gif.png)
-A spinner when be showing when the data is laoding. Once the data is retrieved successfully, the spinner will disappear.
+After clicking on the "Get data" button, a spinner will be shown. 
+Once the data is retrieved successfully, the spinner will disappear.
+
+## 2. Result
+![](images/res.png)
+Successufully loaded the result from Weather API.
 
 ## Postman testing screenshots of XML and JSON outputs:
-### XML Output:
+### 1. XML Output:
 ![](images/postman-xml.png)
 
-### Json Output:
+### 2. Json Output:
 ![](images/postman-json.png)
 
 # Sequence diagrams to show the difference between invoking web service using C# and JQuery
