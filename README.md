@@ -19,8 +19,8 @@ Successufully loaded the result from Weather API.
 ![](images/postman-json.png)
 
 # Sequence diagrams to show the difference between invoking web service using C# and JQuery
-## C#:
+## 1. C#:
 ![](images/diagram1.jpeg)
 
-## AJAX:
+## 2. AJAX:
 ![](images/diagram2.jpeg)
